@@ -18,12 +18,25 @@ export default function TodoList(){
         localStorage.setItem('ListaCompra', JSON.stringify(lista));
     }, [lista])
 
+    useEffect(()=>{
+        calculaTotalItem();
+        console.log("segundo useEffect!");
+    }, [qtd, preco])
+
+    function calculaTotalItem(){
+        if(preco && qtd){
+            let precoFormatado = parseFloat(preco.replace(",", "."));
+            let total = qtd * precoFormatado;
+            setTotal(total);
+        }
+    }
+
     function adicionaItem(form){
         form.preventDefault();
         if(!descricao){
             return;
         }
-        setLista([...lista, {descricao: descricao, qtd: qtd, preco: preco, isCompleted: false}]);
+        setLista([...lista, {descricao: descricao, qtd: qtd, preco: preco, total: total, isCompleted: false}]);
         setDescricao("");
         setQtd("");
         setPreco("");
@@ -49,7 +62,7 @@ export default function TodoList(){
 
     return(
         <div>
-            <h1>Lista de Compras</h1>
+            <h1>Shopp List</h1>
             <form onSubmit={adicionaItem}>
                 <input 
                 className="myInput"
@@ -90,7 +103,7 @@ export default function TodoList(){
                             <div
                                 key={index}
                                 className={item.isCompleted? "item completo": "item"}>
-                                <span onClick={()=>{clicou(index)}}>{item.descricao}</span>
+                                <span onClick={()=>{clicou(index)}}>{item.descricao} - QTD: {item.qtd} - Preço: {item.preco} - Total: {item.total}</span>
                                 <button className="del" onClick={()=>{deleta()}}>Deletar</button>
                             </div>
                         ))
