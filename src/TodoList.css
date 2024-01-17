@@ -153,6 +153,12 @@ button.deleteAll:hover{
 }
 
 
+.myBox {
+    width: 20px;
+    height: 20px;
+}
+
+
 @media screen and (max-width: 900px) {
     form{
         width: 100%;

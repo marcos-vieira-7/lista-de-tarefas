@@ -57,12 +57,16 @@ export default function TodoList(){
     }
 
     function deletaTudo(){
-        setLista([]);
+
+        let confirm = window.confirm("Essa deleção é realmente necessária?");
+        if (confirm) {
+            setLista([]);
+        }
     }
 
     return(
         <div>
-            <h1>Shopp List</h1>
+            <h1>Shopping List</h1>
             <form onSubmit={adicionaItem}>
                 <input 
                 className="myInput"
