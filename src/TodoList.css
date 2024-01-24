@@ -5,6 +5,11 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+/* body, html {
+    margin: 0;
+    padding: 0;
+  } */
+
 *:focus{
     outline: none;
 }
@@ -140,7 +145,15 @@ button.deleteAll:hover{
 }
 
 .myInput{
+
     margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.inputDefault{
+    width: 300px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .item.completo span{
@@ -158,6 +171,31 @@ button.deleteAll:hover{
     height: 20px;
 }
 
+
+.div_login {
+
+    margin: 0 auto;
+    border: 1px solid green;
+    display: flex;
+    width: 400px;
+    height: 400px;
+    flex-direction: column; /* empilha itens verticalmente */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+}
+
+.buttonConfirm {
+    margin-top: 20px;
+    width: 250px;
+    height: 50px;
+    background-color: #4cc9f0;
+    border-radius: 10px;
+    border: none;
+}
+
+.buttonConfirm:active {
+    box-shadow: 0 4px 8px rgba(29, 121, 197, 0.2); /* Adiciona sombreamento ao pressionar o botão */
+  }
 
 @media screen and (max-width: 900px) {
     form{
