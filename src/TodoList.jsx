@@ -85,6 +85,20 @@ function TodoList(){
                 }
                 </div>
             </div>
+
+            {/* Modal personalizado */}
+            <div id="demo-modal" className="modalPessoal">
+                <div className="modalContent">
+                    <h1>Titulo modal</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum doloribus, velit delectus minus fugit voluptates sint culpa at, ipsam harum illo a ex iure. Sunt earum quia quis veritatis cum.</p>
+
+                    <div className="modalFooter">
+                        <a href="#" class="modalBtnClose">Fechar</a>
+                    </div>
+                    <a href="#" class="modalClose">&times;</a>
+                </div>
+            </div>
+            {/* <a href="#demo-modal">Abrir modal</a> */}
         </div>
     )
 }
