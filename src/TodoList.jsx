@@ -29,13 +29,25 @@ function TodoList(){
     }
 
     function deleta(index){
-        const listaAux = [...lista];
-        listaAux.splice(index,1);
-        setLista(listaAux);
+
+        let confirma_delecao = confirm("Tem certeza que deseja excluir esta tarefa?");
+
+        if (confirma_delecao) {
+            const listaAux = [...lista];
+            listaAux.splice(index,1);
+            setLista(listaAux);
+        }
+
     }
 
     function deletaTudo(){
-        setLista([]);
+
+        let confirma_delecao = confirm("Tem certeza que deseja excluir todas as tarefas? Esta ação não poderá ser revertida.");
+
+        if (confirma_delecao) {
+            setLista([]);
+        }
+        
     }
 
     return(

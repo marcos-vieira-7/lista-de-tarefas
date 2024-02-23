@@ -1,0 +1,18 @@
+
+/* .div_center {
+    margin: auto;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.div_login {
+    margin: 0 auto;
+    border: 1px solid green;
+    display: flex;
+    width: 400px;
+    height: 400px;
+    flex-direction: column; /* empilha itens verticalmente */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+} */
