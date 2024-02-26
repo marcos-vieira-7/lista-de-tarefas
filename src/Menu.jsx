@@ -76,57 +76,66 @@ export default function Menu() {
             </form> */}
 
             <div className="listaCompras">
-                <div style={{textAlign: 'center'}}>
+
+                <div className="divConteudo" style={{textAlign: 'center'}}>
                     {/* TODO: */}
-                    <h3>Lorem</h3>
-                    {
-                        carne.length < 1
-                        ?
-                        null
-                        // <img className="icone-central" src={Icone} />
-                        :
-                        carne.map((item, index)=> (
-                            <div
-                                key={index}
-                                className={item.isCompleted? "item completo": "item"}>
-                                <span onClick={()=>{clicou(index)}}>{item.nome} - Preço: {item.preco}</span>
-                                <input className="myBox" type="checkbox" value={item.nome }></input>
-                            </div>
-                        ))
-                    }
-                    
-                    <h3>Ipsum</h3>
-                    {
-                        guarnicao.length < 1
-                        ?
-                        null
-                        // <img className="icone-central" src={Icone} />
-                        :
-                        guarnicao.map((item, index)=> (
-                            <div
-                                key={index}
-                                className={item.isCompleted? "item completo": "item"}>
-                                <span onClick={()=>{clicou(index)}}>{item.nome} - Preço: {item.preco}</span>
-                            </div>
-                        ))
-                    }
 
-                    <h3>Consectetur</h3>
-                    {
-                        complemento.length < 1
-                        ?
-                        null
-                        // <img className="icone-central" src={Icone} />
-                        :
-                        complemento.map((item, index)=> (
-                            <div
-                                key={index}
-                                className={item.isCompleted? "item completo": "item"}>
-                                <span onClick={()=>{clicou(index)}}>{item.nome} - Preço: {item.preco}</span>
-                            </div>
-                        ))
-                    }
+                    <div className="divMenu">
+                      <h2 className="titulo">Carne</h2>
+                      {
+                          carne.length < 1
+                          ?
+                          null
+                          // <img className="icone-central" src={Icone} />
+                          :
+                          carne.map((item, index)=> (
+                              <div
+                                  key={index}
+                                  className={item.isCompleted? "item completo": "item"}>
+                                  <span onClick={()=>{clicou(index)}}>{item.nome} - Preço: {item.preco}</span>
+                                  {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
+                              </div>
+                          ))
+                      }
+                    </div>
 
+                    <div className="divMenu">
+                      <h2 className="titulo">Acompanhamento</h2>
+                      {
+                          guarnicao.length < 1
+                          ?
+                          null
+                          // <img className="icone-central" src={Icone} />
+                          :
+                          guarnicao.map((item, index)=> (
+                              <div
+                                  key={index}
+                                  className={item.isCompleted? "item completo": "item"}>
+                                  <span onClick={()=>{clicou(index)}}>{item.nome} - Preço: {item.preco}</span>
+                                  {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
+                              </div>
+                          ))
+                      }
+                    </div>
+
+                    <div className="divMenu">
+                      <h2 className="titulo">Complemento</h2>
+                      {
+                          complemento.length < 1
+                          ?
+                          null
+                          // <img className="icone-central" src={Icone} />
+                          :
+                          complemento.map((item, index)=> (
+                              <div
+                                  key={index}
+                                  className={item.isCompleted? "item completo": "item"}>
+                                  <span onClick={()=>{clicou(index)}}>{item.nome} - Preço: {item.preco}</span>
+                                  {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
+                              </div>
+                          ))
+                      }
+                    </div>
 
                 </div>
             </div>

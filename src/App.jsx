@@ -7,9 +7,9 @@ import Login from './Login';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <TodoList />
+    {/* <TodoList /> */}
     {/* <ListaCompras /> */}
-    {/* <Menu /> */}
+    <Menu />
     {/* <Login /> */}
   </React.StrictMode>,
 )

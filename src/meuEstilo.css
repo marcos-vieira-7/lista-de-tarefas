@@ -12,7 +12,8 @@
     display: flex;
     width: 400px;
     height: 400px;
-    flex-direction: column; /* empilha itens verticalmente */
-    align-items: center; /* centraliza verticalmente */
-    justify-content: center; /* centraliza horizontalmente */
-} */
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+} 
+*/

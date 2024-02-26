@@ -80,6 +80,7 @@ input {
     display: flex;
     justify-content: space-between;
     border: 1px solid #363b65;
+    border-radius: 10px;
     margin-bottom: 10px;
     cursor: pointer;
 }
@@ -91,7 +92,8 @@ input {
 .item span{
     text-align: start;
     width: 100%;
-    color: white;
+    /* color: white; */
+    color: #4d506e;
     margin-right: 10px;
     padding: 10px 15px;
 }
@@ -257,6 +259,22 @@ button.deleteAll:hover{
     border-radius: 3px;
   }
 
+.divMenu{
+    padding-bottom: 40px;
+    border-bottom: 1px dotted #7d83b9;
+}
+
+.titulo {
+    color: #7d83b9;;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.divConteudo {
+    border: 1px dotted whitesmoke;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: whitesmoke;
+}
 
 
 @media screen and (max-width: 900px) {
