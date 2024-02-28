@@ -4,10 +4,13 @@ import Icone from './assets/shoppList.jpg';
 import { Checkbox } from "@mui/joy";
 
 
+
 export default function Menu() {
 
     const listaStorage = localStorage.getItem('ListaMenu');
     const [lista, setLista] = useState(listaStorage? JSON.parse(listaStorage): [""]);
+
+
 
     const [carne, setCarne] = useState(
         [
@@ -67,6 +70,37 @@ export default function Menu() {
           ]
     );
 
+    const [modeloDisponivel, setModeloDisponivel] = useState(
+      [
+        {
+          "id": 1,
+          "nome": "MARMITEX PEQUENA",
+          "descricao": "Acompanha 1 opção de carne. 3 opções de guarnições. 2 companhamentos e 2 saladas à escolha",
+          "preco": 14.00
+        },
+        {
+          "id": 2,
+          "nome": "MARMITEX GRANDE",
+          "descricao": "Acompanha 2 opções de carnes. 3 opções de guarnições. 2 companhamentos e 2 saladas à escolha",
+          "preco": 19.00
+        }
+      ]
+    );
+
+    const [modeloEscolhido, setModeloEscolhido] = useState(false);
+    const [modeloMarmita, setModeloMarmita] = useState();
+
+    const formatCurrencyBR = (valor) => {
+      if (isNaN(valor)) {
+        return 'R$ 0,00';
+      }
+      const valorFormatado = parseFloat(valor).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+      });
+      return valorFormatado;
+  }
+
     return(
         <div>
         <h1>Menu</h1>
@@ -80,19 +114,31 @@ export default function Menu() {
                 <div className="divConteudo" style={{textAlign: 'center'}}>
                     {/* TODO: */}
 
+                  { modeloEscolhido ?
+                    <>
+                    {/* Informativo do modelo escolhido pelo usuario */}
+                    {modeloDisponivel.map((item)=> (
+                      item.id == modeloMarmita ?
+                        <>
+                          <h3>{item.nome} - {formatCurrencyBR(item.preco)}</h3> <span style={{fontSize: "12px"}}>{item.descricao}</span>
+                        </>
+                        :
+                        null
+                    ))}
+
                     <div className="divMenu">
                       <h2 className="titulo">Carne</h2>
                       {
                           carne.length < 1
                           ?
                           null
-                          // <img className="icone-central" src={Icone} />
+                          // <img className="icone-central" src={Icone} />  {formatCurrencyBR(parseFloat(item.preco))}
                           :
                           carne.map((item, index)=> (
                               <div
                                   key={index}
                                   className={item.isCompleted? "item completo": "item"}>
-                                  <span onClick={()=>{clicou(index)}}>{item.nome} - Preço: {item.preco}</span>
+                                  <span onClick={()=>{clicou(index)}}>{item.nome}</span>
                                   {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
                               </div>
                           ))
@@ -111,7 +157,7 @@ export default function Menu() {
                               <div
                                   key={index}
                                   className={item.isCompleted? "item completo": "item"}>
-                                  <span onClick={()=>{clicou(index)}}>{item.nome} - Preço: {item.preco}</span>
+                                  <span onClick={()=>{clicou(index)}}>{item.nome}</span>
                                   {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
                               </div>
                           ))
@@ -130,12 +176,35 @@ export default function Menu() {
                               <div
                                   key={index}
                                   className={item.isCompleted? "item completo": "item"}>
-                                  <span onClick={()=>{clicou(index)}}>{item.nome} - Preço: {item.preco}</span>
+                                  <span onClick={()=>{clicou(index)}}>{item.nome}</span>
                                   {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
                               </div>
                           ))
                       }
                     </div>
+                    </>
+                    :
+                    <div className="divMenu">
+                      <h2 className="titulo">Escolha o Modelo</h2>
+                      {
+                          modeloDisponivel.length < 1
+                          ?
+                          null
+                          // <img className="icone-central" src={Icone} />
+                          :
+                          modeloDisponivel.map((item, index) => (
+                              <div
+                                  key={index}
+                                  className={"item"}>
+                                  <span onClick={()=>{setModeloMarmita(item.id), setModeloEscolhido(true)}}>{item.nome} - <strong>{formatCurrencyBR(parseFloat(item.preco))}</strong> : <span style={{fontSize: "12px"}}>{item.descricao}</span></span>
+
+                                  {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
+                              </div>
+                          ))
+                      }
+                    </div>
+                  }
+
 
                 </div>
             </div>
