@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './TodoList.css';
 import Icone from './assets/shoppList.jpg';
-import { Checkbox } from "@mui/joy";
-
+import Checkbox from '@mui/joy/Checkbox';
 
 
 export default function Menu() {
@@ -10,21 +9,22 @@ export default function Menu() {
     const listaStorage = localStorage.getItem('ListaMenu');
     const [lista, setLista] = useState(listaStorage? JSON.parse(listaStorage): [""]);
 
-
-
     const [carne, setCarne] = useState(
         [
             {
+              "id": 1,
               "nome": "Bife à Parmegiana",
               "tipo": "Carne Bovina",
               "preco": 25.99
             },
             {
+              "id": 2,
               "nome": "Frango Grelhado",
               "tipo": "Frango",
               "preco": 18.99
             },
             {
+              "id": 3,
               "nome": "Costelas de Porco BBQ",
               "tipo": "Carne Suína",
               "preco": 22.50
@@ -34,16 +34,19 @@ export default function Menu() {
     const [guarnicao, setGuarnicao] = useState(
         [
             {
+              "id": 4,
               "nome": "Arroz Branco",
               "tipo": "Acompanhamento",
               "preco": 5.99
             },
             {
+              "id": 5,
               "nome": "Batata Frita",
               "tipo": "Acompanhamento",
               "preco": 6.50
             },
             {
+              "id": 6,
               "nome": "Legumes Grelhados",
               "tipo": "Acompanhamento",
               "preco": 7.25
@@ -53,16 +56,19 @@ export default function Menu() {
     const [complemento, setComplemento] = useState(
         [
             {
+              "id": 7,
               "nome": "Molho Chimichurri",
               "tipo": "Complemento",
               "preco": 3.99
             },
             {
+              "id": 8,
               "nome": "Geleia de Pimenta",
               "tipo": "Complemento",
               "preco": 4.50
             },
             {
+              "id": 9,
               "nome": "Farofa de Bacon",
               "tipo": "Complemento",
               "preco": 5.25
@@ -89,6 +95,7 @@ export default function Menu() {
 
     const [modeloEscolhido, setModeloEscolhido] = useState(false);
     const [modeloMarmita, setModeloMarmita] = useState();
+    const [itensSelecionados,setItensSelecionados] = useState([]);
 
     const formatCurrencyBR = (valor) => {
       if (isNaN(valor)) {
@@ -99,6 +106,10 @@ export default function Menu() {
         currency: 'BRL',
       });
       return valorFormatado;
+    }
+
+  const guardaItem = (nome) => {
+    setItensSelecionados([...itensSelecionados, nome]);
   }
 
     return(
@@ -125,6 +136,12 @@ export default function Menu() {
                         :
                         null
                     ))}
+                    
+                    {/* {itensSelecionados.length > 0 ?
+                      itensSelecionados
+                      : 
+                      null 
+                    } */}
 
                     <div className="divMenu">
                       <h2 className="titulo">Carne</h2>
@@ -138,7 +155,7 @@ export default function Menu() {
                               <div
                                   key={index}
                                   className={item.isCompleted? "item completo": "item"}>
-                                  <span onClick={()=>{clicou(index)}}>{item.nome}</span>
+                                  <span onClick={()=>{guardaItem(item.id)}}>{item.nome}</span> 
                                   {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
                               </div>
                           ))
@@ -157,7 +174,7 @@ export default function Menu() {
                               <div
                                   key={index}
                                   className={item.isCompleted? "item completo": "item"}>
-                                  <span onClick={()=>{clicou(index)}}>{item.nome}</span>
+                                  <span onClick={()=>{guardaItem(item.id)}}>{item.nome}</span>
                                   {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
                               </div>
                           ))
@@ -176,7 +193,7 @@ export default function Menu() {
                               <div
                                   key={index}
                                   className={item.isCompleted? "item completo": "item"}>
-                                  <span onClick={()=>{clicou(index)}}>{item.nome}</span>
+                                  <span onClick={()=>{guardaItem(item.id)}}>{item.nome}</span>
                                   {/* <input className="myBox" type="checkbox" value={item.nome }></input> */}
                               </div>
                           ))
@@ -204,8 +221,6 @@ export default function Menu() {
                       }
                     </div>
                   }
-
-
                 </div>
             </div>
         </div>
